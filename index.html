@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="theme-dark">
+
+  <header class="header">
+    <div>
+
+      <h1>Productivity Dashboard</h1>
+    </div>
+
+    <div class="theme-toggle" id="themeToggle">
+      <i class="ri-moon-line"></i>
+      <span>Dark Mode</span>
+    </div>
+
+  </header>
+
+  <main>
+
+    <section id="sectionB">
+      <div class="card" id="0">
+        <img
+          src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="" srcset="">
+        <div class="details">
+          <h1>Todo</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, commodi facilis. Nemo!</p>
+        </div>
+      </div>
+
+      <div class="card" id="1">
+        <img
+          src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="" srcset="">
+        <div class="details">
+          <h1>Todo</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, commodi facilis. Nemo!</p>
+        </div>
+      </div>
+
+      <div class="card" id="2">
+        <img
+          src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="" srcset="">
+        <div class="details">
+          <h1>Todo</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, commodi facilis. Nemo!</p>
+        </div>
+      </div>
+
+      <div class="card" id="3">
+        <img
+          src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="" srcset="">
+        <div class="details">
+          <h1>Todo</h1> 
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, commodi facilis. Nemo!</p>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="fullelem hidden" id="0">
+      <div class="topheader">
+        <h1>Todo is here</h1>
+        <button onclick="backbtn(0)"> <i class="ri-arrow-left-wide-fill"></i>
+          <span >Back</span></button>
+      </div>
+      <div class="content">
+        <div class="leftform">
+          <form>
+            <div>
+              <label for="title">title</label>
+              <input type="text" name="title" id="title" placeholder="Title is here ">
+            </div>
+            <div>
+              <label for="desc">desciption</label>
+              <textarea name="desc" id="desc" rows="10" placeholder="desciption is here"></textarea>
+            </div>
+            <div class="markasimp">
+              <label for="imp">Mark as important!</label>
+              <input type="checkbox" name="imp" id="imp" placeholder="Title is here ">
+            </div>
+            <div>
+              <button id="formsubmit" type="submit">Add</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="righttodo tasksadd">
+      
+        </div>
+      </div>
+    </section>
+
+    <section class="fullelem hidden" id="1">
+      sadf
+    </section>
+
+    <section class="fullelem hidden" id="2">
+      sdafd
+    </section>
+    <section class="fullelem hidden" id="3">
+      asdfda
+    </section>
+
+  </main>
+
+  <script src="./script.js"></script>
+</body>
+
+</html>
