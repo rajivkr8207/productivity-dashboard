@@ -334,6 +334,15 @@ main {
                 }
             }
         }
+        .plainnerstyle{
+            display: flex;
+            flex-direction: column;
+
+            .topinput{
+                width: 100%;
+                 background-color: var(--card-bg);
+            }
+        }
     }
 
     .hidden {

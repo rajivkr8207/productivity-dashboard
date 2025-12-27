@@ -288,6 +288,14 @@ main .fullelem .content .righttodo .tasks .rightbtn button {
 main .fullelem .content .righttodo .tasks .rightbtn .delete {
   background-color: red;
 }
+main .fullelem .plainnerstyle {
+  display: flex;
+  flex-direction: column;
+}
+main .fullelem .plainnerstyle .topinput {
+  width: 100%;
+  background-color: var(--card-bg);
+}
 main .hidden {
   display: none;
 }/*# sourceMappingURL=style.css.map */
