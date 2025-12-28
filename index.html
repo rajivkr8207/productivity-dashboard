@@ -47,12 +47,12 @@
         </div>
       </div>
 
-      <div class="card" id="2">
+      <div class="card" onclick="fetchmotivation()"  id="2">
         <img
           src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="" srcset="">
         <div class="details">
-          <h1>Todo</h1>
+          <h1>motivational quotes</h1>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, commodi facilis. Nemo!</p>
         </div>
       </div>
@@ -62,7 +62,7 @@
           src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="" srcset="">
         <div class="details">
-          <h1>Todo</h1> 
+          <h1>pomodoro Timer</h1> 
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, commodi facilis. Nemo!</p>
         </div>
       </div>
@@ -109,16 +109,43 @@
           <span >Back</span></button>
       </div>
        <div class="plainnerstyle">
-          <div class="topinput"></div>
-          <div class="bottomdata"></div>
        </div>
     </section>
 
     <section class="fullelem hidden" id="2">
-      sdafd
+      <div class="topheader">
+        <h1>Motivational Quotes</h1>
+        <button onclick="backbtn(2)"> <i class="ri-arrow-left-wide-fill"></i>
+          <span >Back</span></button>
+      </div>
+       <div class="motivationqutes">
+          <div class="quotes">
+            <h3 id="quote-text"></h3>
+            <div class="author" id="quote-author"></div>
+          </div>
+       </div>
     </section>
+
+
     <section class="fullelem hidden" id="3">
-      asdfda
+      <div class="topheader">
+        <h1>pomodoro</h1>
+        <button onclick="backbtn(3)"> <i class="ri-arrow-left-wide-fill"></i>
+          <span >Back</span></button>
+      </div>
+      <div class="poromodoroTimer">
+        <div class="pomodoro-timer-container">
+          <div class="pomodoro-timer-display" id="pomodoro-timer-display">25:00</div>
+          <div class="pomodoro-timer-controls">
+            <button id="pomodorobtn pomodoro-start" onclick="startTimer()">Start</button>
+            <button id="pomodorobtn pomodoro-pause" onclick="pauseTimer()">Pause</button>
+            <button id="pomodorobtn pomodoro-reset" onclick="resetTimer()">Reset</button>
+            <button id="pomodorobtn pomodoro-break">Break</button>
+          </div>
+        </div>
+
+        </div>
+      </div>
     </section>
 
   </main>

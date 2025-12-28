@@ -31,15 +31,17 @@ body {
 :root {
   /* Light theme colors */
   --bg: #222831;
-  --card-bg: #393E46;
+  --card-bg: #393e46;
   --text: #f6f6f6;
   --subtext: #c4c4c4;
   --border: #f6f6f6;
+  --btn-bg: #8855ec;
+  --btn-text: white;
   --primary: #3498db;
   --secondary: #ecf0f1;
   --accent: #2ecc71;
   --warning: #e74c3c;
-  --pomodoro: #e74c3c;
+  --pomodoro: #ef776a;
   --todo: #3498db;
   --tracker: #9b59b6;
   --motivation: #2ecc71;
@@ -204,7 +206,7 @@ main .fullelem .content .leftform form div textarea {
   color: var(--text);
 }
 main .fullelem .content .leftform form div button {
-  background-color: var(--todo);
+  background-color: var(--btn-bg);
   border: none;
   border-radius: 1rem;
   display: inline;
@@ -290,11 +292,138 @@ main .fullelem .content .righttodo .tasks .rightbtn .delete {
 }
 main .fullelem .plainnerstyle {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0.8rem 0rem;
 }
-main .fullelem .plainnerstyle .topinput {
-  width: 100%;
+main .fullelem .plainnerstyle .plannertime {
+  width: 45%;
+  margin: auto;
   background-color: var(--card-bg);
+  padding: 0.8rem;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+main .fullelem .plainnerstyle .plannertime p {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+main .fullelem .plainnerstyle .plannertime input {
+  font-size: 1.3rem;
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: white;
+}
+main .fullelem .motivationqutes {
+  width: 100%;
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+main .fullelem .motivationqutes .quotes {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 32px 0 rgba(92, 18, 126, 0.25), 0 2px 4px 0 rgba(0, 0, 0, 0.04);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  padding: 2.5rem 2rem 2rem 2rem;
+  border-radius: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: 600px;
+  width: 90vw;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 10;
+  transition: box-shadow 0.2s;
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+}
+main .fullelem .motivationqutes .quotes h3 {
+  font-size: 2rem;
+  color: #ffee00;
+  font-style: italic;
+  font-family: "Georgia", serif;
+  line-height: 1.4;
+  margin-bottom: 1.8rem;
+  position: relative;
+}
+main .fullelem .motivationqutes .quotes h3::before, main .fullelem .motivationqutes .quotes h3::after {
+  content: '"';
+  color: #ffea31;
+  font-size: 2.5rem;
+  font-weight: bold;
+  vertical-align: top;
+  opacity: 0.5;
+}
+main .fullelem .motivationqutes .quotes .author {
+  font-size: 1.15rem;
+  color: #fff422;
+  font-weight: 700;
+  margin-top: 0.5rem;
+  letter-spacing: 0.03em;
+}
+main .fullelem .poromodoroTimer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+main .fullelem .poromodoroTimer .pomodoro-timer-container {
+  width: 30rem;
+  height: 20rem;
+  background: var(--pomodoro);
+  padding: 2.5rem 2rem 2.5rem 2rem;
+  border-radius: 2rem;
+  box-shadow: 0 6px 40px 0 rgba(60, 0, 90, 0.3), 0 2px 8px 0 rgba(200, 200, 255, 0.02);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+main .fullelem .poromodoroTimer .pomodoro-timer-display {
+  font-size: 3.5rem;
+  font-family: "Orbitron", "Verdana", monospace;
+  color: var(--text);
+  letter-spacing: 0.07em;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 1.2rem;
+  padding: 1.3rem 3.2rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px 0 rgba(255, 255, 255, 0.04);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+main .fullelem .poromodoroTimer .pomodoro-timer-controls {
+  display: flex;
+  gap: 1.1rem;
+  justify-content: center;
+  align-items: center;
+}
+main .fullelem .poromodoroTimer .pomodoro-timer-controls button {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: 1px solid var(--btn-text);
+  outline: none;
+  font-size: 1.1rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  box-shadow: 0 1px 8px 0 rgba(97, 54, 255, 0.13);
+  transition: background 0.19s, color 0.19s, transform 0.13s;
+}
+main .fullelem .poromodoroTimer .pomodoro-timer-controls button:active {
+  scale: 0.95;
 }
 main .hidden {
   display: none;
