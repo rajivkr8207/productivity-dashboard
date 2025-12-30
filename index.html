@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="theme-dark">
+<body>
 
   <header class="header">
     <div>
@@ -26,6 +26,22 @@
 
   <main>
 
+    <section id="sectionA">
+      <div class="date-location">
+        <p class="today-date">
+        </p>
+        <h1 class="today-time"></h1>
+        <p class="cityname"></p>
+      </div>
+
+      <div class="location-temp">
+        <h1 class="temp"> <span class="realtemp"></span>℃</h1>
+        <h2 class="temp-feellike"> feel like: <span class="feelike"></span></h2> 
+          <h3 class="temp-humidity">humidity: <span class="humidity"></span>%</h3>
+      </div>
+    </section>
+
+    
     <section id="sectionB">
       <div class="card" id="0">
         <img
@@ -47,7 +63,7 @@
         </div>
       </div>
 
-      <div class="card" onclick="fetchmotivation()"  id="2">
+      <div class="card" onclick="fetchmotivation()" id="2">
         <img
           src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="" srcset="">
@@ -62,7 +78,7 @@
           src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="" srcset="">
         <div class="details">
-          <h1>pomodoro Timer</h1> 
+          <h1>pomodoro Timer</h1>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, commodi facilis. Nemo!</p>
         </div>
       </div>
@@ -73,18 +89,18 @@
       <div class="topheader">
         <h1>Todo is here</h1>
         <button onclick="backbtn(0)"> <i class="ri-arrow-left-wide-fill"></i>
-          <span >Back</span></button>
+          <span>Back</span></button>
       </div>
       <div class="content">
         <div class="leftform">
-          <form>
+          <form>  
             <div>
               <label for="title">title</label>
-              <input type="text" name="title" id="title" placeholder="Title is here ">
+              <input type="text" name="title" id="title" placeholder="Title is here " required>
             </div>
             <div>
               <label for="desc">desciption</label>
-              <textarea name="desc" id="desc" rows="10" placeholder="desciption is here"></textarea>
+              <textarea name="desc" id="desc" rows="10" placeholder="desciption is here" required></textarea>
             </div>
             <div class="markasimp">
               <label for="imp">Mark as important!</label>
@@ -97,7 +113,7 @@
         </div>
 
         <div class="righttodo tasksadd">
-      
+
         </div>
       </div>
     </section>
@@ -106,24 +122,24 @@
       <div class="topheader">
         <h1>Daily Planner</h1>
         <button onclick="backbtn(1)"> <i class="ri-arrow-left-wide-fill"></i>
-          <span >Back</span></button>
+          <span>Back</span></button>
       </div>
-       <div class="plainnerstyle">
-       </div>
+      <div class="plainnerstyle">
+      </div>
     </section>
 
     <section class="fullelem hidden" id="2">
       <div class="topheader">
         <h1>Motivational Quotes</h1>
         <button onclick="backbtn(2)"> <i class="ri-arrow-left-wide-fill"></i>
-          <span >Back</span></button>
+          <span>Back</span></button>
       </div>
-       <div class="motivationqutes">
-          <div class="quotes">
-            <h3 id="quote-text"></h3>
-            <div class="author" id="quote-author"></div>
-          </div>
-       </div>
+      <div class="motivationqutes">
+        <div class="quotes">
+          <h3 id="quote-text"></h3>
+          <div class="author" id="quote-author"></div>
+        </div>
+      </div>
     </section>
 
 
@@ -131,25 +147,27 @@
       <div class="topheader">
         <h1>pomodoro</h1>
         <button onclick="backbtn(3)"> <i class="ri-arrow-left-wide-fill"></i>
-          <span >Back</span></button>
+          <span>Back</span></button>
       </div>
       <div class="poromodoroTimer">
         <div class="pomodoro-timer-container">
+          <div class="pomodoro-worksession">
+            <p class="worksession-title"></p>
+          </div>
           <div class="pomodoro-timer-display" id="pomodoro-timer-display">25:00</div>
           <div class="pomodoro-timer-controls">
             <button id="pomodorobtn pomodoro-start" onclick="startTimer()">Start</button>
             <button id="pomodorobtn pomodoro-pause" onclick="pauseTimer()">Pause</button>
             <button id="pomodorobtn pomodoro-reset" onclick="resetTimer()">Reset</button>
-            <button id="pomodorobtn pomodoro-break">Break</button>
+            <button id="pomodorobtn pomodoro-pomodoro " class="hidden pomodoro"
+              onclick="PomodoroTimer()">pomodoro</button>
+            <button id="pomodorobtn pomodoro-break" class="break" onclick="BreakTimer()">Break</button>
           </div>
         </div>
-
-        </div>
+      </div>
       </div>
     </section>
-
   </main>
-
   <script src="./script.js"></script>
 </body>
 

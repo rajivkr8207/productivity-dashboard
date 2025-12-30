@@ -82,6 +82,57 @@ main {
   max-width: 1800px;
   margin-inline: auto;
 }
+main #sectionA {
+  width: 95%;
+  min-height: 20rem;
+  margin: 0.8rem auto;
+  border-radius: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  background-image: url("https://images.unsplash.com/photo-1496854863306-cbb8c4407988?q=80&w=1626&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-position: center;
+  background-size: cover;
+  text-transform: capitalize;
+  flex-wrap: wrap;
+}
+main #sectionA .date-location {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  font-weight: 900;
+  background-color: rgba(0, 0, 0, 0.2);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  padding: 1rem;
+  border-radius: 10px;
+}
+main #sectionA .date-location .today-date {
+  font-size: 1.5rem;
+}
+main #sectionA .date-location .today-time {
+  font-size: 3rem;
+}
+main #sectionA .date-location .cityname {
+  font-size: 1.5rem;
+}
+main #sectionA .location-temp {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-weight: 800;
+  background-color: rgba(0, 0, 0, 0.2);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  padding: 1rem;
+  border-radius: 10px;
+}
+main #sectionA .location-temp .temp {
+  font-size: 5rem;
+  font-weight: 800;
+}
 main #sectionB {
   display: flex;
   justify-content: center;
@@ -115,6 +166,9 @@ main #sectionB .card .details {
   gap: 0.4rem;
   transition: all 0.3s ease;
 }
+main #sectionB .card .details h1 {
+  text-transform: capitalize;
+}
 main #sectionB .card:hover .details {
   background-color: rgba(0, 0, 0, 0.3);
   -webkit-backdrop-filter: blur(10px);
@@ -122,7 +176,7 @@ main #sectionB .card:hover .details {
 }
 main .fullelem {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-content: center;
@@ -135,6 +189,11 @@ main .fullelem {
   top: 0;
   left: 0;
 }
+@media (max-width: 900px) {
+  main .fullelem {
+    height: auto;
+  }
+}
 main .fullelem .topheader {
   display: flex;
   justify-content: space-between;
@@ -145,10 +204,11 @@ main .fullelem .topheader h1 {
   letter-spacing: 2px;
 }
 main .fullelem .topheader button {
-  background-color: red;
+  background-color: var(--warning);
   color: white;
   padding: 0.6rem 1rem;
   border: none;
+  font-size: 1.3rem;
   border-radius: 0.5rem;
   font-weight: 800;
 }
@@ -157,14 +217,29 @@ main .fullelem .content {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+}
+@media (max-width: 900px) {
+  main .fullelem .content {
+    flex-direction: column;
+    height: auto;
+    align-items: stretch;
+    gap: 1rem;
+  }
 }
 main .fullelem .content .leftform {
   width: 30%;
-  height: 100%;
+  height: 90vh;
   background-color: var(--card-bg);
   padding: 2rem;
   color: white;
   border-radius: 2rem;
+}
+@media (max-width: 900px) {
+  main .fullelem .content .leftform {
+    width: 100%;
+    height: auto;
+  }
 }
 main .fullelem .content .leftform form {
   margin: 1rem;
@@ -240,7 +315,7 @@ main .fullelem .content .leftform form .markasimp input:checked::after {
 }
 main .fullelem .content .righttodo {
   width: 68%;
-  height: 100%;
+  height: 90vh;
   background-color: var(--card-bg);
   border-radius: 2rem;
   padding: 1rem;
@@ -250,6 +325,12 @@ main .fullelem .content .righttodo {
   flex-direction: column;
   gap: 2rem;
 }
+@media (max-width: 900px) {
+  main .fullelem .content .righttodo {
+    width: 100%;
+    height: auto;
+  }
+}
 main .fullelem .content .righttodo .tasks {
   width: 100%;
   background-color: rgb(255, 255, 152);
@@ -258,6 +339,11 @@ main .fullelem .content .righttodo .tasks {
   padding: 0.6rem 1rem;
   color: black;
   border-radius: 1rem;
+}
+@media (max-width: 900px) {
+  main .fullelem .content .righttodo .tasks {
+    flex-direction: column;
+  }
 }
 main .fullelem .content .righttodo .tasks .lefttext {
   font-family: bolds;
@@ -285,6 +371,7 @@ main .fullelem .content .righttodo .tasks .rightbtn button {
   font-family: bolds;
   padding: 0.6rem 1rem;
   border: none;
+  cursor: pointer;
   border-radius: 1rem;
 }
 main .fullelem .content .righttodo .tasks .rightbtn .delete {
@@ -370,7 +457,7 @@ main .fullelem .motivationqutes .quotes .author {
   letter-spacing: 0.03em;
 }
 main .fullelem .poromodoroTimer {
-  height: 100%;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -379,8 +466,8 @@ main .fullelem .poromodoroTimer {
 main .fullelem .poromodoroTimer .pomodoro-timer-container {
   width: 30rem;
   height: 20rem;
-  background: var(--pomodoro);
-  padding: 2.5rem 2rem 2.5rem 2rem;
+  background: var(--card-bg);
+  padding: 2rem;
   border-radius: 2rem;
   box-shadow: 0 6px 40px 0 rgba(60, 0, 90, 0.3), 0 2px 8px 0 rgba(200, 200, 255, 0.02);
   display: flex;
@@ -388,12 +475,20 @@ main .fullelem .poromodoroTimer .pomodoro-timer-container {
   align-items: center;
   gap: 2rem;
 }
-main .fullelem .poromodoroTimer .pomodoro-timer-display {
+main .fullelem .poromodoroTimer .pomodoro-timer-container .pomodoro-worksession p {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background-color: var(--warning);
+  padding: 0.6rem 1rem;
+  text-transform: capitalize;
+  border-radius: 10px;
+}
+main .fullelem .poromodoroTimer .pomodoro-timer-container .pomodoro-timer-display {
   font-size: 3.5rem;
   font-family: "Orbitron", "Verdana", monospace;
   color: var(--text);
   letter-spacing: 0.07em;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 1.2rem;
   padding: 1.3rem 3.2rem;
   margin-bottom: 1rem;
@@ -402,13 +497,13 @@ main .fullelem .poromodoroTimer .pomodoro-timer-display {
      -moz-user-select: none;
           user-select: none;
 }
-main .fullelem .poromodoroTimer .pomodoro-timer-controls {
+main .fullelem .poromodoroTimer .pomodoro-timer-container .pomodoro-timer-controls {
   display: flex;
   gap: 1.1rem;
   justify-content: center;
   align-items: center;
 }
-main .fullelem .poromodoroTimer .pomodoro-timer-controls button {
+main .fullelem .poromodoroTimer .pomodoro-timer-container .pomodoro-timer-controls button {
   background: var(--btn-bg);
   color: var(--btn-text);
   border: 1px solid var(--btn-text);
@@ -422,7 +517,7 @@ main .fullelem .poromodoroTimer .pomodoro-timer-controls button {
   box-shadow: 0 1px 8px 0 rgba(97, 54, 255, 0.13);
   transition: background 0.19s, color 0.19s, transform 0.13s;
 }
-main .fullelem .poromodoroTimer .pomodoro-timer-controls button:active {
+main .fullelem .poromodoroTimer .pomodoro-timer-container .pomodoro-timer-controls button:active {
   scale: 0.95;
 }
 main .hidden {

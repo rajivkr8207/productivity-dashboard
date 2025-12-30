@@ -27,7 +27,6 @@ const imp = document.querySelector('#imp')
 form.addEventListener('submit', function (e) {
     e.preventDefault()
     if (taskid && updatetask) {
-        console.log('heelo');
         alltasks = alltasks.map((item, index) => {
             if (item.id == taskid) {
                 return {
@@ -42,6 +41,7 @@ form.addEventListener('submit', function (e) {
         taskid = null;
         updatetask = false;
     } else {
+        
         alltasks.push({
             id: Date.now(),
             title: title.value,
@@ -66,7 +66,7 @@ function renderalltaks() {
         alltasks = JSON.parse(localStorage.getItem('todoapp'))
     }
     if (alltasks.length > 0) {
-        alltasks.forEach((elem, index) => {
+        alltasks.forEach((elem) => {
             sum += `
     <div class="tasks">
             <div class="lefttext">
@@ -74,7 +74,7 @@ function renderalltaks() {
               ${elem.imp ? '<span>imp</span>' : ''} 
             </div>
             <div class="rightbtn">
-              <button onClick="completedtask(${elem.id})" >${elem.completed ? 'completed' : 'mark as complete'} </button>
+              <button onClick="completedtask(${elem.id})" >${elem.completed ? 'completed' : 'mark_as_com'} </button>
               <button onClick="updatetodo(${elem.id})" id='${elem.id}'>update</button>
               
               <button class='delete deletebtn' onClick="deletetask(${elem.id})" id='${elem.id}'>delete</button>
@@ -179,7 +179,7 @@ const coderMotivationQuotes = [
     { id: 8, quote: "Simplicity is the soul of efficient code.", author: "Austin Freeman" },
     { id: 9, quote: "Your future self will thank you for clean code.", author: "Kunal Shah" },
     { id: 10, quote: "A good programmer looks both ways before crossing a one-way street.", author: "Doug Linder" },
-  
+
     { id: 11, quote: "Don’t fear errors; fear not learning from them.", author: "Sandeep Yadav" },
     { id: 12, quote: "Code is like humor. When you have to explain it, it’s bad.", author: "Cory House" },
     { id: 13, quote: "Programming rewards discipline, not shortcuts.", author: "Rahul Mishra" },
@@ -190,7 +190,7 @@ const coderMotivationQuotes = [
     { id: 18, quote: "Your keyboard is your tool; discipline is your power.", author: "Manish Kapoor" },
     { id: 19, quote: "A clean architecture reflects a clear mind.", author: "Deepak Joshi" },
     { id: 20, quote: "Struggle today, deploy confidently tomorrow.", author: "Harsh Vardhan" },
-  
+
     { id: 21, quote: "Good code is written for humans first, machines second.", author: "Harold Abelson" },
     { id: 22, quote: "Consistency beats talent when talent stops practicing.", author: "Rajat Malhotra" },
     { id: 23, quote: "You don’t need motivation. You need discipline.", author: "Akhil Nair" },
@@ -201,7 +201,7 @@ const coderMotivationQuotes = [
     { id: 28, quote: "Every failed build teaches precision.", author: "Yash Kulkarni" },
     { id: 29, quote: "Master fundamentals before chasing frameworks.", author: "Prateek Saxena" },
     { id: 30, quote: "Software is built one logical decision at a time.", author: "Ankit Tiwari" },
-  
+
     { id: 31, quote: "Great developers automate boredom.", author: "Ravi Shankar" },
     { id: 32, quote: "Focus on clarity, performance will follow.", author: "Karthik Iyer" },
     { id: 33, quote: "Reading code is as important as writing it.", author: "Abhishek Pandey" },
@@ -212,7 +212,7 @@ const coderMotivationQuotes = [
     { id: 38, quote: "The terminal teaches humilitytimer.", author: "Naveen Choudhary" },
     { id: 39, quote: "Readable code is professionaltimer code.", author: "Shubham Raj" },
     { id: 40, quote: "You grow every time you breaktimer and fix something.", author: "Tarun Malhotra" },
-  
+
     { id: 41, quote: "A strong foundation outlives every framework.", author: "Piyush Agarwal" },
     { id: 42, quote: "Coding is persistence disguised as logic.", author: "Rohit Kulkarni" },
     { id: 43, quote: "Solve problems, not just tickets.", author: "Keshav Verma" },
@@ -223,7 +223,7 @@ const coderMotivationQuotes = [
     { id: 48, quote: "Good software is built, not rushed.", author: "Kunal Arora" },
     { id: 49, quote: "Debugging builds patience and mastery.", author: "Mayank Tripathi" },
     { id: 50, quote: "Write code today that your future self will respect.", author: "Ritesh Chauhan" }
-  ];
+];
 
 
 
@@ -233,7 +233,7 @@ const author = document.querySelector('#quote-author')
 
 // // Motivational Quotes API Example
 function fetchmotivation() {
-    const randomno = Math.floor(Math.random()*coderMotivationQuotes.length)
+    const randomno = Math.floor(Math.random() * coderMotivationQuotes.length)
     const data = coderMotivationQuotes[randomno]
     quotes.innerHTML = data.quote
     author.innerHTML = data.author
@@ -242,25 +242,45 @@ function fetchmotivation() {
 
 
 const timerdp = document.querySelector('#pomodoro-timer-display')
-const starttimer = document.querySelector('#pomodoro-start')
-const pausetimer = document.querySelector('#pomodoro-pause')
-const resettimer = document.querySelector('#pomodoro-reset')
-const breaktimer = document.querySelector('#pomodoro-break')
-let TimerInterval = null
-let timerun = 25*60
+const breaktimer = document.querySelector('.break')
+const pomodoro = document.querySelector('.pomodoro')
+const worktitle = document.querySelector('.worksession-title')
 
+let TimerInterval = null
+let timerun = 25 * 60
+let worksessation = true
+
+
+function updateTimer() {
+    if(!worksessation){
+        pomodoro.classList.remove('hidden')
+        breaktimer.classList.add('hidden')
+        worktitle.innerHTML =  `break time`
+    }else{
+        pomodoro.classList.add('hidden')
+        breaktimer.classList.remove('hidden')
+        worktitle.innerHTML =  `work time`
+
+    }
+    const min = Math.floor(timerun / 60)
+    const second = Math.floor(timerun % 60)
+    timerdp.innerHTML = `${String(min).padStart(2, "0")}:${String(second).padStart(2, "0")}`
+}
 
 function startTimer() {
     clearInterval(TimerInterval)
     TimerInterval = setInterval(() => {
-        const min = Math.floor(timerun/60)
-        const second = Math.floor(timerun%60)
-        if(timerun >0){
+        if (timerun >0) {
             timerun--
-            timerdp.innerHTML = `${min}:${second}`
-        }else{
+            updateTimer()
+        } else {
             clearInterval(TimerInterval)
-
+            if(worksessation){
+                worksessation = false
+            }else{
+                worksessation = true
+            }
+            resetTimer()
         }
     }, 10);
 }
@@ -269,8 +289,85 @@ function pauseTimer() {
     clearInterval(TimerInterval)
 }
 
-function resetTimer(params) {
+function resetTimer() {
     clearInterval(TimerInterval)
-    timerun = 25*60
+    if (worksessation){
+        timerun = 25 * 60
+    }else{
+        timerun = 5 * 60
+    }
+    updateTimer()
+}
+function BreakTimer() {
+    clearInterval(TimerInterval)
+    worksessation = false
+    timerun = 5 * 60
+    updateTimer()
+}
+function PomodoroTimer() {
+    clearInterval(TimerInterval)
+    if(!worksessation){
+        worksessation =true
+        timerun = 25*60
+        updateTimer()
+    }
     
 }
+updateTimer()
+
+
+const apiKey = '1b67615db12d368802bacd9b9da4b0a4'
+const todaydate = document.querySelector('.today-date')
+const todaytime = document.querySelector('.today-time')
+
+function getDatetime() {
+    const date  = new Date().getDate();
+    const year  = new Date().getFullYear();
+    const month  = new Date().getMonth();
+    const week = new Date().getDay()
+    const fulltime = new Date().toLocaleTimeString()
+    const weekname = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];    
+    const monthNames = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+    todaydate.innerHTML = `${date} ${monthNames[month]} ${year}`
+    todaytime.innerHTML = `${weekname[week]} ${fulltime}`
+}
+setInterval(() => {
+    getDatetime()
+}, 1000);
+
+async function weatherFetch(city) {
+    const cityname = document.querySelector('.cityname')
+    const realtemp = document.querySelector('.realtemp')
+    const feelike = document.querySelector('.feelike')
+    const humidity = document.querySelector('.humidity')
+    const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
+    const data = await res.json()
+    console.log(data)
+    cityname.innerHTML = data.name
+    realtemp.innerHTML = data.main.temp
+    feelike.innerHTML = data.main.feels_like
+    humidity.innerHTML = data.main.humidity
+
+}
+
+async function cityFetch(long,lat) {
+    const res = await fetch(`https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${long}&limit=1&appid=${apiKey}`)
+    const data = await res.json()
+    weatherFetch(data[0].name)
+}
+
+
+navigator.geolocation.getCurrentPosition((data)=>{
+    cityFetch(data.coords.longitude, data.coords.latitude)
+});
+
+
+
+
+
+
+
+
