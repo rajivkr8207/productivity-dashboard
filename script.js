@@ -41,7 +41,7 @@ form.addEventListener('submit', function (e) {
         taskid = null;
         updatetask = false;
     } else {
-        
+
         alltasks.push({
             id: Date.now(),
             title: title.value,
@@ -252,14 +252,14 @@ let worksessation = true
 
 
 function updateTimer() {
-    if(!worksessation){
+    if (!worksessation) {
         pomodoro.classList.remove('hidden')
         breaktimer.classList.add('hidden')
-        worktitle.innerHTML =  `break time`
-    }else{
+        worktitle.innerHTML = `break time`
+    } else {
         pomodoro.classList.add('hidden')
         breaktimer.classList.remove('hidden')
-        worktitle.innerHTML =  `work time`
+        worktitle.innerHTML = `work time`
 
     }
     const min = Math.floor(timerun / 60)
@@ -270,19 +270,19 @@ function updateTimer() {
 function startTimer() {
     clearInterval(TimerInterval)
     TimerInterval = setInterval(() => {
-        if (timerun >0) {
+        if (timerun > 0) {
             timerun--
             updateTimer()
         } else {
             clearInterval(TimerInterval)
-            if(worksessation){
+            if (worksessation) {
                 worksessation = false
-            }else{
+            } else {
                 worksessation = true
             }
             resetTimer()
         }
-    }, 10);
+    }, 1000);
 }
 
 function pauseTimer() {
@@ -291,9 +291,9 @@ function pauseTimer() {
 
 function resetTimer() {
     clearInterval(TimerInterval)
-    if (worksessation){
+    if (worksessation) {
         timerun = 25 * 60
-    }else{
+    } else {
         timerun = 5 * 60
     }
     updateTimer()
@@ -306,12 +306,12 @@ function BreakTimer() {
 }
 function PomodoroTimer() {
     clearInterval(TimerInterval)
-    if(!worksessation){
-        worksessation =true
-        timerun = 25*60
+    if (!worksessation) {
+        worksessation = true
+        timerun = 25 * 60
         updateTimer()
     }
-    
+
 }
 updateTimer()
 
@@ -321,12 +321,12 @@ const todaydate = document.querySelector('.today-date')
 const todaytime = document.querySelector('.today-time')
 
 function getDatetime() {
-    const date  = new Date().getDate();
-    const year  = new Date().getFullYear();
-    const month  = new Date().getMonth();
+    const date = new Date().getDate();
+    const year = new Date().getFullYear();
+    const month = new Date().getMonth();
     const week = new Date().getDay()
     const fulltime = new Date().toLocaleTimeString()
-    const weekname = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];    
+    const weekname = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const monthNames = [
         "January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
@@ -345,7 +345,6 @@ async function weatherFetch(city) {
     const humidity = document.querySelector('.humidity')
     const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
     const data = await res.json()
-    console.log(data)
     cityname.innerHTML = data.name
     realtemp.innerHTML = data.main.temp
     feelike.innerHTML = data.main.feels_like
@@ -353,21 +352,44 @@ async function weatherFetch(city) {
 
 }
 
-async function cityFetch(long,lat) {
+async function cityFetch(long, lat) {
     const res = await fetch(`https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${long}&limit=1&appid=${apiKey}`)
     const data = await res.json()
     weatherFetch(data[0].name)
 }
 
 
-navigator.geolocation.getCurrentPosition((data)=>{
+navigator.geolocation.getCurrentPosition((data) => {
     cityFetch(data.coords.longitude, data.coords.latitude)
 });
 
 
 
+const toggle = document.querySelector('#themeToggle')
+const rootElem = document.documentElement
 
+function coloradd() {
+    const col1 = Math.floor(Math.random() * 256)
+    const col2 = Math.floor(Math.random() * 256)
+    const col3 = Math.floor(Math.random() * 256)
+    return `rgb(${col1}, ${col2}, ${col3})`
+}
 
+toggle.addEventListener('click', () => {
+    let bgcolor = coloradd()
+    let cardbgcolor = coloradd()
+    localStorage.setItem('--bg', bgcolor)
+    localStorage.setItem('--card-bg', cardbgcolor)
+    autocoloradd()
+})
 
+function autocoloradd() {
+    let bgcolor = localStorage.getItem('--bg')
+    let cardbgcolor = localStorage.getItem('--card-bg')
+
+    rootElem.style.setProperty('--bg', bgcolor)
+    rootElem.style.setProperty('--card-bg', cardbgcolor)
+}
+autocoloradd()
 
 

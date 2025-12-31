@@ -39,15 +39,11 @@ body {
 }
 
 :root {
-  /* Light theme colors */
   --bg: #222831;
   --card-bg: #393e46;
-
   --text: #f6f6f6;
-
   --subtext: #c4c4c4;
-
-  --border: #f6f6f6;
+  --border: #1f1414;
   --btn-bg: #8855ec;
   --btn-text: white;
   --primary: #3498db;
@@ -213,7 +209,7 @@ main {
 
       h1 {
         font-family: bolds;
-        text-transform: uppercase;
+        text-transform: capitalize;
         letter-spacing: 2px;
       }
 
