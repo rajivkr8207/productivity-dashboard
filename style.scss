@@ -41,7 +41,8 @@ body {
 :root {
   --bg: #222831;
   --card-bg: #393e46;
-  --text: #f6f6f6;
+
+  --text: #ffffff;
   --subtext: #c4c4c4;
   --border: #1f1414;
   --btn-bg: #8855ec;
@@ -67,8 +68,8 @@ header {
   border-bottom: 1px solid var(--border);
 
   h1 {
-    font-size: 28px;
-    font-weight: 600;
+    font-size: 2rem;
+    font-weight: 800;
     background: linear-gradient(90deg, var(--primary), var(--accent));
     -webkit-background-clip: text;
     background-clip: text;
@@ -79,6 +80,7 @@ header {
     display: flex;
     align-items: center;
     gap: 10px;
+    text-transform: capitalize;
     cursor: pointer;
     padding: 8px 15px;
     border-radius: 20px;
@@ -175,7 +177,6 @@ main {
         flex-direction: column;
         gap: 0.4rem;
         transition: all 0.3s ease;
-
         h1 {
           text-transform: capitalize;
         }
@@ -443,7 +444,7 @@ main {
       overflow: hidden;
 
       .quotes {
-        background: rgba(255, 255, 255, 0.2);
+        background: var(--card-bg);
         box-shadow: 0 4px 32px 0 rgba(92, 18, 126, 0.25),
           0 2px 4px 0 rgba(0, 0, 0, 0.04);
         backdrop-filter: blur(8px);

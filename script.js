@@ -352,43 +352,44 @@ async function weatherFetch(city) {
 
 }
 
-async function cityFetch(long, lat) {
-    const res = await fetch(`https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${long}&limit=1&appid=${apiKey}`)
+async function cityFetch() {
+    const res = await fetch(`https://ipinfo.io/json`)
     const data = await res.json()
-    weatherFetch(data[0].name)
+    weatherFetch(data.city)
 }
 
-
-navigator.geolocation.getCurrentPosition((data) => {
-    cityFetch(data.coords.longitude, data.coords.latitude)
-});
-
+cityFetch()
 
 
 const toggle = document.querySelector('#themeToggle')
 const rootElem = document.documentElement
 
-function coloradd() {
-    const col1 = Math.floor(Math.random() * 256)
-    const col2 = Math.floor(Math.random() * 256)
-    const col3 = Math.floor(Math.random() * 256)
-    return `rgb(${col1}, ${col2}, ${col3})`
-}
+
 
 toggle.addEventListener('click', () => {
-    let bgcolor = coloradd()
-    let cardbgcolor = coloradd()
-    localStorage.setItem('--bg', bgcolor)
-    localStorage.setItem('--card-bg', cardbgcolor)
+    let themecheck = localStorage.getItem('rjtheme') || ''
+    if (themecheck == 'dark') {
+        localStorage.setItem('rjtheme', 'light')
+    } else {
+        localStorage.setItem('rjtheme', 'dark')
+    }
     autocoloradd()
 })
-
+const themechange = document.querySelector('.themechange')
 function autocoloradd() {
-    let bgcolor = localStorage.getItem('--bg')
-    let cardbgcolor = localStorage.getItem('--card-bg')
+    let themecheck = localStorage.getItem('rjtheme')
+    if (themecheck == 'dark') {
+        rootElem.style.setProperty('--bg', '#222831')
+        rootElem.style.setProperty('--card-bg', '#393e46')
+        rootElem.style.setProperty('--text', '#ffffffff')
+        themechange.innerHTML = 'light theme'
+    } else {
+        rootElem.style.setProperty('--bg', '#e7e7e7')
+        rootElem.style.setProperty('--card-bg', '#b5b5b5')
+        rootElem.style.setProperty('--text', '#000000')
+        themechange.innerHTML = 'dark theme'
 
-    rootElem.style.setProperty('--bg', bgcolor)
-    rootElem.style.setProperty('--card-bg', cardbgcolor)
+    }
 }
 autocoloradd()
 
